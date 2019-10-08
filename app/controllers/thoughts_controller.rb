@@ -22,5 +22,8 @@ class ThoughtsController < ApplicationController
     thought = Thought.find(params[:id])
     thought.destroy();
     render json: { data: thought }, status: :ok
+
+    rescue ActiveRecord::RecordNotFound
+        render json: { error: "Thought does not exist" }, status: :not_found
   end
 end

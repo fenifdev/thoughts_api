@@ -58,5 +58,11 @@ RSpec.describe 'Thoughts requests' do
             json = JSON.parse(response.body)
             expect(json['error']).to eql('Thought does not exist');
         end
+
+        it 'returns an error when trying to delete a thought that does not exists' do
+            delete("/thoughts/1")
+            json = JSON.parse(response.body)
+            expect(json['error']).to eql('Thought does not exist');
+        end
     end
 end
