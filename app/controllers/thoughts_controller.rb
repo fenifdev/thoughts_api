@@ -17,4 +17,10 @@ class ThoughtsController < ApplicationController
     thought.save
     render json: { data: thought }, status: :ok
   end
+
+  def destroy
+    thought = Thought.find(params[:id])
+    thought.destroy();
+    render json: { data: thought }, status: :ok
+  end
 end

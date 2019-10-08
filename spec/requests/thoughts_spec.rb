@@ -46,4 +46,17 @@ RSpec.describe 'Thoughts requests' do
             expect(json['data']['text']).to eql('I am hungry');
         end
     end
+
+    describe 'DELETE /thoughts/:id' do
+        it 'returns a deleted thought' do
+            thought = Thought.new(:text => 'I am hungry')
+            thought.save()
+
+            delete("/thoughts/#{thought.id}")
+
+            get("/thoughts/#{thought.id}")
+            json = JSON.parse(response.body)
+            expect(json['error']).to eql('Thought does not exist');
+        end
+    end
 end
