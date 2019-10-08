@@ -11,4 +11,10 @@ class ThoughtsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
         render json: { error: "Thought does not exist" }, status: :not_found
   end
+
+  def create
+    thought = Thought.new(:text => params[:text])
+    thought.save
+    render json: { data: thought }, status: :ok
+  end
 end

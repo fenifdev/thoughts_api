@@ -38,4 +38,12 @@ RSpec.describe 'Thoughts requests' do
             expect(json['error']).to eql('Thought does not exist');
         end
     end
+
+    describe 'POST /thoughts' do
+        it 'returns a created thougth' do
+            post("/thoughts", params: { text: 'I am hungry'})
+            json = JSON.parse(response.body)
+            expect(json['data']['text']).to eql('I am hungry');
+        end
+    end
 end
