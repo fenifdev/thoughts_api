@@ -21,4 +21,21 @@ RSpec.describe 'Thoughts requests' do
             expect(json['data'][1]['text']).to eql('I am happy');
         end
     end
+
+    describe 'GET /thoughts/:id' do
+        it 'returns the data of the thought' do
+            thought = Thought.new(:text => 'I am hungry')
+            thought.save()
+
+            get("/thoughts/#{thought.id}")
+            json = JSON.parse(response.body)
+            expect(json['data']['text']).to eql('I am hungry');
+        end
+
+        it 'returns an error when the thought does not exist' do
+            get("/thoughts/1")
+            json = JSON.parse(response.body)
+            expect(json['error']).to eql('Thought does not exist');
+        end
+    end
 end
