@@ -1,13 +1,20 @@
-# README
+# Thoughts API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It's an API to store thoughts.
 
 Things you may want to cover:
 
 * Ruby version
 
-* System dependencies
+* Install:
+
+Clone the repository
+
+run bundle
+
+```bash
+bundle install
+```
 
 * Configuration
 
@@ -17,7 +24,9 @@ Things you may want to cover:
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+rspec
+```
 
 * Deployment instructions
 
